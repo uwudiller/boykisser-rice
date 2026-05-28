@@ -187,7 +187,8 @@ sudo sh -c 'echo "Current=boykisser" >> /etc/sddm.conf.d/boykisser.conf'
 # Set up fish shell
 print_info "Setting up fish shell..."
 if not grep -q fish /etc/shells
-    sudo sh -c 'echo (which fish) >> /etc/shells'
+    set -l FISH_PATH (which fish)
+    sudo sh -c "echo $FISH_PATH >> /etc/shells"
 end
 chsh -s (which fish)
 
@@ -200,7 +201,7 @@ echo '' >> $STARTUP_SCRIPT
 echo '# Kill existing instances' >> $STARTUP_SCRIPT
 echo 'killall -q waybar' >> $STARTUP_SCRIPT
 echo 'killall -q dunst' >> $STARTUP_SCRIPT
-echo 'killall -swww swww' >> $STARTUP_SCRIPT
+echo 'killall -q swww' >> $STARTUP_SCRIPT
 echo '' >> $STARTUP_SCRIPT
 echo '# Start swww (wallpaper daemon)' >> $STARTUP_SCRIPT
 echo 'swww init &' >> $STARTUP_SCRIPT
