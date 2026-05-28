@@ -1,0 +1,125 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 48,
+    "spacing": 8,
+    "margin-top": 8,
+    "margin-left": 12,
+    "margin-right": 12,
+    
+    "modules-left": ["custom/menu", "hyprland/workspaces", "hyprland/window"],
+    "modules-center": ["clock"],
+    "modules-right": ["tray", "pulseaudio", "bluetooth", "network", "cpu", "memory", "battery", "custom/power"],
+    
+    "hyprland/workspaces": {
+        "format": "{name}",
+        "persistent-workspaces": {
+            "*": 5
+        },
+        "on-click": "activate",
+        "all-outputs": true
+    },
+    
+    "hyprland/window": {
+        "format": "{}",
+        "max-length": 40,
+        "rewrite": {
+            "(.*) - Zen Browser": "🌐 $1",
+            "(.*) - Visual Studio Code": "💻 $1",
+            "(.*) - kitty": "🐱 $1",
+            "(.*) - Thunar": "📁 $1"
+        }
+    },
+    
+    "clock": {
+        "format": "🕐 {:%H:%M}",
+        "format-alt": "📅 {:%A, %B %d, %Y}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode": "year",
+            "mode-mon-col": 3,
+            "weeks-pos": "right",
+            "format": {
+                "months": "<span color='#ff79c6'><b>{}</b></span>",
+                "days": "<span color='#f8f8f2'>{}</span>",
+                "weeks": "<span color='#50fa7b'>W{}</span>",
+                "weekdays": "<span color='#ff79c6'>{}</span>",
+                "today": "<span color='#ff79c6'><b><u>{}</u></b></span>"
+            }
+        },
+        "actions": {
+            "on-click-right": "mode",
+            "on-click-forward": "tz_up",
+            "on-click-backward": "tz_down"
+        }
+    },
+    
+    "cpu": {
+        "format": "🖥️ {usage}%",
+        "interval": 2,
+        "tooltip": true
+    },
+    
+    "memory": {
+        "format": "🧠 {}%",
+        "interval": 2,
+        "tooltip-format": "{used:0.1f}GB / {total:0.1f}GB"
+    },
+    
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": "⚡ {capacity}%",
+        "format-plugged": "🔌 {capacity}%",
+        "format-icons": ["🔴", "🟠", "🟡", "🟢", "🔵"],
+        "tooltip-format": "{time} remaining"
+    },
+    
+    "network": {
+        "format-wifi": "📶 {signalStrength}%",
+        "format-ethernet": "🔗 {ipaddr}",
+        "format-disconnected": "❌",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%)",
+        "tooltip-format-ethernet": "{ipaddr}",
+        "on-click": "nm-connection-editor"
+    },
+    
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "🔇",
+        "format-icons": {
+            "default": ["🔈", "🔉", "🔊"]
+        },
+        "on-click": "pavucontrol",
+        "scroll-step": 5
+    },
+    
+    "bluetooth": {
+        "format": "📷",
+        "format-disabled": "",
+        "format-off": "",
+        "format-connected": "📷 {num_connections}",
+        "tooltip-format": "{device_enumerate}",
+        "on-click": "blueman-manager"
+    },
+    
+    "tray": {
+        "icon-size": 16,
+        "spacing": 8
+    },
+    
+    "custom/menu": {
+        "format": "🌸",
+        "tooltip": false,
+        "on-click": "wofi --show drun"
+    },
+    
+    "custom/power": {
+        "format": "⏻",
+        "tooltip": false,
+        "on-click": "wlogout"
+    }
+}

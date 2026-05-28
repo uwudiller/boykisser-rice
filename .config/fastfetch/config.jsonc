@@ -1,0 +1,148 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "type": "small",
+    "color": {
+      "1": "FF69B4",
+      "2": "FFB6C1",
+      "3": "DDA0DD",
+      "4": "DA70D6",
+      "5": "EE82EE",
+      "6": "FF69B4"
+    },
+    "padding": {
+      "top": 2,
+      "left": 2,
+      "right": 2
+    }
+  },
+  "display": {
+    "separator": " 󰁔 ",
+    "color": {
+      "key": "FF69B4",
+      "title": "FFB6C1",
+      "separator": "DDA0DD"
+    },
+    "brightColor": true,
+    "keyWidth": 18
+  },
+  "modules": [
+    {
+      "type": "title",
+      "color": {
+        "user": "FF69B4",
+        "at": "DDA0DD",
+        "host": "FFB6C1"
+      }
+    },
+    {
+      "type": "separator",
+      "string": "─"
+    },
+    {
+      "type": "os",
+      "key": " 󰌽  OS",
+      "format": "{3} {12}"
+    },
+    {
+      "type": "kernel",
+      "key": " 󰒔  Kernel",
+      "format": "{2}"
+    },
+    {
+      "type": "uptime",
+      "key": " 󰔚  Uptime",
+      "format": "{1}h {2}m"
+    },
+    {
+      "type": "packages",
+      "key": " 󰏗  Packages",
+      "format": "{1} (pacman)"
+    },
+    {
+      "type": "shell",
+      "key": " 󱆃  Shell",
+      "format": "{1} {2}"
+    },
+    {
+      "type": "resolution",
+      "key": " 󰹑  Resolution",
+      "format": "{1}x{2} @ {3}Hz"
+    },
+    {
+      "type": "de",
+      "key": " 󰊻  DE/WM",
+      "format": "Hyprland"
+    },
+    {
+      "type": "theme",
+      "key": " 󰏘  Theme",
+      "format": "Femboy Boykisser"
+    },
+    {
+      "type": "icons",
+      "key": " 󰀯  Icons",
+      "format": "Adwaita"
+    },
+    {
+      "type": "font",
+      "key": " 󰛖  Font",
+      "format": "JetBrains Mono"
+    },
+    {
+      "type": "cpu",
+      "key": " 󰻠  CPU",
+      "format": "{1} ({3}) @ {7}GHz"
+    },
+    {
+      "type": "gpu",
+      "key": " 󰾮  GPU",
+      "format": "{1}"
+    },
+    {
+      "type": "memory",
+      "key": " 󰍛  Memory",
+      "format": "{2} / {1}"
+    },
+    {
+      "type": "swap",
+      "key": " 󰓡  Swap",
+      "format": "{2} / {1}"
+    },
+    {
+      "type": "disk",
+      "key": " 󰋊  Disk",
+      "folder": "/",
+      "format": "{3} / {2}"
+    },
+    {
+      "type": "battery",
+      "key": " 󰂁  Battery",
+      "format": "{1}"
+    },
+    {
+      "type": "locale",
+      "key": " 󰬶  Locale",
+      "format": "{1}"
+    },
+    {
+      "type": "localip",
+      "key": " 󰩠  Local IP",
+      "format": "{1}"
+    },
+    {
+      "type": "weather",
+      "key": " 󰖫  Weather",
+      "format": "{temp}°C {condition}"
+    },
+    {
+      "type": "separator",
+      "string": "─"
+    },
+    {
+      "type": "colors",
+      "key": " 󰏘  Colors",
+      "symbol": "circle"
+    }
+  ]
+}
