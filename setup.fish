@@ -181,49 +181,47 @@ sudo cp $RICE_DIR/.config/sddm/Main.qml /usr/share/sddm/themes/boykisser/Main.qm
 # Configure SDDM to use the theme
 print_info "Configuring SDDM..."
 sudo mkdir -p /etc/sddm.conf.d
-echo "[Theme]" | sudo tee /etc/sddm.conf.d/boykisser.conf > /dev/null
-echo "Current=boykisser" | sudo tee -a /etc/sddm.conf.d/boykisser.conf > /dev/null
+sudo sh -c 'echo "[Theme]" > /etc/sddm.conf.d/boykisser.conf'
+sudo sh -c 'echo "Current=boykisser" >> /etc/sddm.conf.d/boykisser.conf'
 
 # Set up fish shell
 print_info "Setting up fish shell..."
 if not grep -q fish /etc/shells
-    echo (which fish) | sudo tee -a /etc/shells > /dev/null
+    sudo sh -c 'echo (which fish) >> /etc/shells'
 end
 chsh -s (which fish)
 
 # Create startup script
 print_info "Creating startup script..."
-cat > $HOME/.config/hypr/start.sh << 'EOF'
-#!/bin/bash
-# Startup script for Hyprland
-
-# Kill existing instances
-killall -q waybar
-killall -q dunst
-killall -swww swww
-
-# Start swww (wallpaper daemon)
-swww init &
-swww img ~/.local/share/backgrounds/boykisser.png &
-
-# Start Waybar
-waybar &
-
-# Start notification daemon
-dunst &
-
-# Start polkit agent
-/usr/lib/polkit-kde/polkit-kde-authentication-agent-1 &
-
-# Start clipboard manager
-wl-paste --type text --watch cliphist store &
-wl-paste --type image --watch cliphist store &
-
-# Set cursor theme
-hyprctl setcursor Catppuccin-Mocha-Lavender 24
-
-EOF
-chmod +x $HOME/.config/hypr/start.sh
+set -l STARTUP_SCRIPT $HOME/.config/hypr/start.sh
+echo '#!/bin/bash' > $STARTUP_SCRIPT
+echo '# Startup script for Hyprland' >> $STARTUP_SCRIPT
+echo '' >> $STARTUP_SCRIPT
+echo '# Kill existing instances' >> $STARTUP_SCRIPT
+echo 'killall -q waybar' >> $STARTUP_SCRIPT
+echo 'killall -q dunst' >> $STARTUP_SCRIPT
+echo 'killall -swww swww' >> $STARTUP_SCRIPT
+echo '' >> $STARTUP_SCRIPT
+echo '# Start swww (wallpaper daemon)' >> $STARTUP_SCRIPT
+echo 'swww init &' >> $STARTUP_SCRIPT
+echo 'swww img ~/.local/share/backgrounds/boykisser.png &' >> $STARTUP_SCRIPT
+echo '' >> $STARTUP_SCRIPT
+echo '# Start Waybar' >> $STARTUP_SCRIPT
+echo 'waybar &' >> $STARTUP_SCRIPT
+echo '' >> $STARTUP_SCRIPT
+echo '# Start notification daemon' >> $STARTUP_SCRIPT
+echo 'dunst &' >> $STARTUP_SCRIPT
+echo '' >> $STARTUP_SCRIPT
+echo '# Start polkit agent' >> $STARTUP_SCRIPT
+echo '/usr/lib/polkit-kde/polkit-kde-authentication-agent-1 &' >> $STARTUP_SCRIPT
+echo '' >> $STARTUP_SCRIPT
+echo '# Start clipboard manager' >> $STARTUP_SCRIPT
+echo 'wl-paste --type text --watch cliphist store &' >> $STARTUP_SCRIPT
+echo 'wl-paste --type image --watch cliphist store &' >> $STARTUP_SCRIPT
+echo '' >> $STARTUP_SCRIPT
+echo '# Set cursor theme' >> $STARTUP_SCRIPT
+echo 'hyprctl setcursor Catppuccin-Mocha-Lavender 24' >> $STARTUP_SCRIPT
+chmod +x $STARTUP_SCRIPT
 
 print_success "Setup complete! 🌸"
 print_info "Please log out and log back in, then start Hyprland with:"
