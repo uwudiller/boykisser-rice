@@ -46,8 +46,15 @@ A cute and fully functional Hyprland rice for Arch Linux with a pink/pastel "fem
 
 1. Clone or download this repository
 2. Navigate to the directory
-3. Run the setup script:
+3. Run the setup script (choose one):
 
+**Using Bash:**
+```bash
+chmod +x setup.sh
+./setup.sh
+```
+
+**Using Fish:**
 ```bash
 fish setup.fish
 ```
